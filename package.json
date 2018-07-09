@@ -2,9 +2,14 @@
   "name": "ignite-plugin-json-schema",
   "version": "1.0.0",
   "description": "Generate Documentation based on a json-schema",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "init": "dist/init.js",
+  "files": [
+    "dist/init.js"
+  ],
   "scripts": {
     "lint": "xo",
+    "build": "babel src -d dist --ignore '**/__tests__/' --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,6 +22,7 @@
     "react": "^16.4.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.52",
     "@babel/core": "^7.0.0-beta.52",
     "@babel/preset-env": "^7.0.0-beta.52",
     "@babel/preset-react": "^7.0.0-beta.52",
