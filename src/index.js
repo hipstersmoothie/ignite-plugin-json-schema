@@ -51,7 +51,7 @@ ListItem.propTypes = {
   type: PropTypes.string,
   description: PropTypes.string,
   values: PropTypes.array,
-  schemaMatcher: PropTypes.func
+  schemaMatcher: PropTypes.object
 };
 
 ListItem.defaultProps = {
@@ -64,17 +64,19 @@ ListItem.defaultProps = {
 
 export const PropertyList = ({ items, schemaMatcher }) => (
   <ul>
-    {map(items, item => <ListItem {...item} schemaMatcher={schemaMatcher} />)}
+    {map(items, item => (
+      <ListItem key={item.name} {...item} schemaMatcher={schemaMatcher} />
+    ))}
   </ul>
 );
 
 PropertyList.propTypes = {
-  schemaMatcher: PropTypes.func,
+  schemaMatcher: PropTypes.object,
   items: PropTypes.array
 };
 
 PropertyList.defaultProps = {
-  schemaMatcher: () => {},
+  schemaMatcher: {},
   items: null
 };
 
@@ -86,7 +88,7 @@ class Schema extends Component {
   }
 
   render() {
-    const key = this.props.options[0];
+    const key = this.props.options[0] || this.props.id;
     const id = key.args ? key.args[0] : key;
     const rootDefinition = this.schemaMatcher.getRootDefinition(id);
 
@@ -137,14 +139,14 @@ class Schema extends Component {
 Schema.propTypes = {
   _initData: PropTypes.any,
   plugins: PropTypes.object,
-  options: PropTypes.array,
+  options: PropTypes.object,
   omitProperties: PropTypes.array
 };
 
 Schema.defaultProps = {
   _initData: null,
   plugins: {},
-  options: [],
+  options: {},
   omitProperties: []
 };
 
