@@ -1,0 +1,86 @@
+{
+  "name": "ignite-plugin-json-schema",
+  "version": "1.0.0",
+  "description": "Generate Documentation based on a json-schema",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "xo",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "deepmerge": "^2.1.1",
+    "json-schema-ref-parser": "^5.0.3",
+    "lodash-es": "^4.17.10",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.52",
+    "@babel/preset-env": "^7.0.0-beta.52",
+    "@babel/preset-react": "^7.0.0-beta.52",
+    "@babel/preset-stage-3": "^7.0.0-beta.52",
+    "babel-eslint": "^8.2.5",
+    "eslint": "^5.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-xo-react": "^0.17.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-react": "^7.10.0",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7",
+    "xo": "^0.21.1"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "xo": {
+    "parser": "babel-eslint",
+    "extends": [
+      "prettier",
+      "xo-react/space"
+    ],
+    "plugins": [
+      "prettier",
+      "jest"
+    ],
+    "env": [
+      "browser",
+      "node",
+      "jest"
+    ],
+    "rules": {
+      "no-console": [
+        2,
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "max-params": [
+        1,
+        5
+      ],
+      "react/jsx-tag-spacing": {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never"
+      }
+    }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-stage-3"
+    ]
+  }
+}
