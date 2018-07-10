@@ -4,14 +4,6 @@ import PropTypes from 'prop-types';
 
 import SchemaMatcher from './schema-matcher';
 
-// import modifiers from './plugins/modifierTable';
-// import role from './plugins/roleTable';
-
-const plugins = {
-  // modifiers,
-  // 'metaData.properties.role': role
-};
-
 export const ListItem = ({
   name,
   type,
@@ -93,7 +85,7 @@ class Schema extends Component {
     const rootDefinition = this.schemaMatcher.getRootDefinition(id);
 
     if (!rootDefinition) {
-      return '<div />';
+      return <div />;
     }
 
     const requiredProperties = rootDefinition.required || [];
@@ -124,7 +116,7 @@ class Schema extends Component {
         <PropertyList items={required} schemaMatcher={this.schemaMatcher} />
         <h4>Optional</h4>
         <PropertyList items={optional} schemaMatcher={this.schemaMatcher} />
-        {map(plugins, (render, name) =>
+        {Object.entries(this.props._injectedComponents).map(([name, render]) =>
           render(
             this.schemaMatcher.resolveWhole(
               get(rootDefinition, `properties.${name}`)

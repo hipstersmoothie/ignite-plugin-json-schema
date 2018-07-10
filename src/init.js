@@ -1,6 +1,10 @@
 import fs from 'fs';
 import $RefParser from 'json-schema-ref-parser';
 
+export function injectComponents(config = {}) {
+  return config.plugins;
+}
+
 export default function initSchema(config = {}) {
   if (config.bundled && typeof config.schema === 'object') {
     return config.schema;
