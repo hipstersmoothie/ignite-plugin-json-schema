@@ -1,6 +1,7 @@
 [![CircleCI branch](https://img.shields.io/circleci/project/github/hipstersmoothie/ignite-plugin-json-schema/master.svg?style=for-the-badge)](https://circleci.com/gh/hipstersmoothie/ignite-plugin-json-schema/tree/master) [![Codecov branch](https://img.shields.io/codecov/c/github/hipstersmoothie/ignite-plugin-json-schema/master.svg?style=for-the-badge)](https://codecov.io/gh/hipstersmoothie/ignite-plugin-json-schema/branch/master) [![npm](https://img.shields.io/npm/v/ignite-plugin-json-schema.svg?style=for-the-badge)](https://www.npmjs.com/package/ignite-plugin-json-schema)
 [![npm](https://img.shields.io/npm/dt/ignite-plugin-json-schema.svg?style=for-the-badge)](https://www.npmjs.com/package/ignite-plugin-json-schema)
 
+<div align="center">
 <img width="200" height="200"
       src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/fire.png">
 
