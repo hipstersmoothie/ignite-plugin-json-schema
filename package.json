@@ -1,6 +1,6 @@
 {
   "name": "ignite-plugin-json-schema",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate Documentation based on a json-schema",
   "main": "dist/index.js",
   "init": "dist/init.js",
