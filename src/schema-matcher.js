@@ -1,4 +1,4 @@
-import { get, map, mapValues, union, filter, isObject } from 'lodash-es';
+import _ from 'lodash';
 import deepmerge from 'deepmerge';
 
 function escapeRegExp(string) {
@@ -26,12 +26,15 @@ class SchemaMatcher {
     let foundSchema;
 
     while (currentParts.length <= pathLength) {
-      foundSchema = get(this.schema, currentParts.join('.'));
+      foundSchema = _.get(this.schema, currentParts.join('.'));
 
       if (foundSchema.$ref) {
         foundSchema = this.resolveRef(foundSchema);
         foundSchema = foundSchema[0] || foundSchema;
-        return get(foundSchema, pathParts.join('.'));
+
+        return pathParts.length
+          ? _.get(foundSchema, pathParts.join('.'))
+          : foundSchema;
       }
 
       currentParts.push(pathParts.shift());
@@ -51,11 +54,11 @@ class SchemaMatcher {
     }
 
     if (definition.allOf) {
-      const allOf = map(definition.allOf, def => {
+      const allOf = _.map(definition.allOf, def => {
         const resolved = this.resolveSchema(def);
         return {
           ...resolved,
-          properties: mapValues(resolved.properties, this.resolveSchema)
+          properties: _.mapValues(resolved.properties, this.resolveSchema)
         };
       });
 
@@ -63,7 +66,7 @@ class SchemaMatcher {
     }
 
     if (definition.anyOf) {
-      definition.anyOf = map(definition.anyOf, def => {
+      definition.anyOf = _.map(definition.anyOf, def => {
         if (def.$ref) {
           const resolved = this.resolveRef(def);
           return this.resolveSchema(resolved);
@@ -77,7 +80,7 @@ class SchemaMatcher {
   };
 
   tupleArray(properties) {
-    return map(properties, (value, key) =>
+    return _.map(properties, (value, key) =>
       Object.assign({}, value, this.resolveRef(value), {
         name: key
       })
@@ -88,13 +91,13 @@ class SchemaMatcher {
     if (levels === 0) {
       return definition;
     }
-    if (!isObject(definition)) {
+    if (!_.isObject(definition)) {
       return definition;
     }
 
     definition = this.resolveSchema(definition);
 
-    map(definition, (schemaDef, key) => {
+    _.map(definition, (schemaDef, key) => {
       definition[key] = this.resolveWhole(schemaDef, levels - 1);
     });
 
@@ -102,7 +105,7 @@ class SchemaMatcher {
   }
 
   findMatchingDefinitions = (schema = this.schema, identifier) => {
-    if (!isObject(schema)) {
+    if (!_.isObject(schema)) {
       return;
     }
 
@@ -114,12 +117,12 @@ class SchemaMatcher {
       return [schema];
     }
 
-    let found = map(schema, schemaDef =>
+    let found = _.map(schema, schemaDef =>
       this.findMatchingDefinitions(schemaDef, identifier)
     );
 
-    found = union(...found);
-    found = filter(found, isObject);
+    found = _.union(...found);
+    found = _.filter(found, _.isObject);
 
     return found;
   };

@@ -1,0 +1,384 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem no value 1`] = `
+<li>
+  <b>
+    testItem
+  </b>
+  <i>
+    [
+    something
+    ]
+  </i>
+  
+</li>
+`;
+
+exports[`ListItem with sub props 1`] = `
+<li>
+  <b>
+    testItem
+  </b>
+  <i>
+    [
+    object
+    ]
+  </i>
+  
+  <div>
+    
+    <ul>
+      <li>
+        <b>
+          prop1
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+      <li>
+        <b>
+          prop2
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+</li>
+`;
+
+exports[`ListItem with value 1`] = `
+<li>
+  <b>
+    testItem
+  </b>
+  <i>
+    [
+    something
+    ]
+  </i>
+  <code>
+    one
+    two
+    three
+  </code>
+</li>
+`;
+
+exports[`PropertyList has properties 1`] = `
+<div>
+  <h4>
+    Title
+  </h4>
+  <ul>
+    <li>
+      <b>
+        testItem
+      </b>
+      <i>
+        [
+        something
+        ]
+      </i>
+      
+    </li>
+    <li>
+      <b>
+        testItem2
+      </b>
+      <i>
+        [
+        something
+        ]
+      </i>
+      <code>
+        one
+        two
+        three
+      </code>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`PropertyList no properties 1`] = `null`;
+
+exports[`Schema Component displays correct title 1`] = `
+<div>
+  <h1>
+    root
+  </h1>
+  <p>
+    description
+  </p>
+  <h2>
+    Structure
+  </h2>
+  <div>
+    <h4>
+      Required
+    </h4>
+    <ul>
+      <li>
+        <b>
+          requiredProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h4>
+      Optional
+    </h4>
+    <ul>
+      <li>
+        <b>
+          optionalProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Schema Component displays correct title 2`] = `
+<div>
+  <h1>
+    root
+  </h1>
+  <p>
+    description
+  </p>
+  <h2>
+    Structure
+  </h2>
+  <div>
+    <h4>
+      Required
+    </h4>
+    <ul>
+      <li>
+        <b>
+          requiredProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h4>
+      Optional
+    </h4>
+    <ul>
+      <li>
+        <b>
+          optionalProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Schema Component excludes omitted property 1`] = `
+<div>
+  <h1>
+    title
+  </h1>
+  <p>
+    description
+  </p>
+  <h2>
+    Structure
+  </h2>
+  <div>
+    <h4>
+      Optional
+    </h4>
+    <ul>
+      <li>
+        <b>
+          optionalProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Schema Component excludes plugins 1`] = `
+<div>
+  <h1>
+    title
+  </h1>
+  <p>
+    description
+  </p>
+  <h2>
+    Structure
+  </h2>
+  <div>
+    <h4>
+      Required
+    </h4>
+    <ul>
+      <li>
+        <b>
+          requiredProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+  <div>
+    Custom
+  </div>
+  <div>
+    Nothing here
+  </div>
+</div>
+`;
+
+exports[`Schema Component root def found 1`] = `
+<div>
+  <h1>
+    title
+  </h1>
+  <p>
+    description
+  </p>
+  <h2>
+    Structure
+  </h2>
+  <div>
+    <h4>
+      Required
+    </h4>
+    <ul>
+      <li>
+        <b>
+          requiredProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h4>
+      Optional
+    </h4>
+    <ul>
+      <li>
+        <b>
+          optionalProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Schema Component root def found 2`] = `
+<div>
+  <h1>
+    title
+  </h1>
+  <p>
+    description
+  </p>
+  <h2>
+    Structure
+  </h2>
+  <div>
+    <h4>
+      Required
+    </h4>
+    <ul>
+      <li>
+        <b>
+          requiredProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h4>
+      Optional
+    </h4>
+    <ul>
+      <li>
+        <b>
+          optionalProp
+        </b>
+        <i>
+          [
+          string
+          ]
+        </i>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Schema Component root def not found 1`] = `<div />`;

@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "id": "root",
+  "required": ["id", "topic", "views", "schema", "data", "navigation"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "schema": {
+      "type": "object",
+      "properties": {
+        "ROOT": {
+          "type": "object",
+          "additionalProperties": true,
+          "patternProperties": {
+            "\\S+": {
+              "type": "object",
+              "required": ["type"],
+              "additionalProperties": true,
+              "properties": {
+                "type": { "type": ["null", "string"] },
+                "UUID": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "UUID": {
+            "type": "object",
+            "required": ["type"],
+            "additionalProperties": false,
+            "properties": { "type": { "type": ["null", "string"] } }
+          },
+          "enum": { "type": "array" },
+          "type": { "type": "string" }
+        },
+        "additionalProperties": {
+          "type": "object",
+          "_comment":
+            "required ['type'] - type used to be required, needs attention",
+          "additionalProperties": true,
+          "properties": {
+            "type": { "type": "string" },
+            "metadata": { "type": "object" },
+            "validation": {
+              "type": "array",
+              "items": {
+                "$ref":
+                  "#/properties/errorsAndWarnings/additionalProperties/items"
+              }
+            },
+            "format": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["type"],
+              "properties": {
+                "type": { "type": "string" },
+                "mask": { "type": "string" }
+              }
+            },
+            "enum": {
+              "type": "array",
+              "items": { "type": ["string", "null", "boolean", "number"] }
+            },
+            "default": { "type": ["string", "null", "boolean", "number"] }
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": true,
+      "patternProperties": {
+        "\\S+": {
+          "type": ["object", "array", "string", "integer"],
+          "additionalProperties": true
+        }
+      }
+    },
+    "navigation": {
+      "type": "object",
+      "required": ["BEGIN"],
+      "properties": {
+        "BEGIN": {
+          "type": "string"
+        }
+      },
+      "patternProperties": {
+        "^(?!(?:BEGIN)$).*$": {
+          "type": "object",
+          "required": ["startState"],
+          "additionalProperties": true,
+          "properties": {
+            "startState": {
+              "type": "string"
+            },
+            "onStart": {
+              "anyOf": [
+                { "type": "string" },
+                { "type": "array", "items": { "type": "string" } },
+                { "type": "object" },
+                {
+                  "$ref":
+                    "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0"
+                }
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "exp": {
+                  "oneOf": [
+                    { "type": "object" },
+                    { "type": "string" },
+                    { "type": "array", "items": { "type": "string" } }
+                  ]
+                }
+              }
+            },
+            "END_done": {
+              "type": "object",
+              "required": ["state_type"],
+              "additionalProperties": true,
+              "properties": {
+                "state_type": { "type": "string" },
+                "outcome": { "type": "string" },
+                "customTransition": { "type": "boolean" }
+              }
+            }
+          },
+          "patternProperties": {
+            "!(startState|onStart|END_done)": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "state_type": {
+                  "type": "string",
+                  "enum": ["VIEW", "ACTION", "END"]
+                },
+                "ref": { "type": "string" },
+                "transitions": {
+                  "type": "object",
+                  "patternProperties": { "\\S+": { "type": "string" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "messages": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "validation": { "type": "object" },
+        "pageValidationMessage": { "type": "object" }
+      }
+    },
+    "metaData": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "FRFVersion": {
+          "type": "string"
+        },
+        "MEFVersion": { "type": "string" },
+        "visualGallery": {
+          "type": "object",
+          "properties": {
+            "iOS": {
+              "type": "string",
+              "enum": ["Yes", "No"]
+            },
+            "android": {
+              "type": "string",
+              "enum": ["Yes", "No"]
+            },
+            "web": {
+              "type": "string",
+              "enum": ["Yes", "No"]
+            },
+            "wiki": {
+              "type": "string"
+            },
+            "xd": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "group": {
+              "type": "string"
+            },
+            "versionDeprecated": {
+              "type": "string"
+            },
+            "versionCreated": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "types": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "validation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string" },
+                "message": { "type": "string" }
+              }
+            }
+          },
+          "format": { "type": "object" }
+        }
+      }
+    },
+    "errorsAndWarnings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "type": { "type": "string" },
+                "message": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "properties": { "asset": { "type": "string" } }
+                    },
+                    { "type": "string" }
+                  ]
+                },
+                "pageMessage": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "properties": { "asset": { "type": "string" } }
+                    },
+                    { "type": "string" }
+                  ]
+                },
+                "param": {
+                  "type": ["string", "number", "boolean", "null", "array"]
+                },
+                "helperMessage": { "type": "string" },
+                "severity": { "enum": ["error", "warning"] },
+                "blocking": { "type": "boolean" },
+                "trigger": {
+                  "oneOf": [
+                    {
+                      "$ref":
+                        "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/1"
+                    },
+                    {
+                      "enum": ["onChange", "onNavigation"]
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref":
+                          "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "not": {
+                "type": "object",
+                "additionalProperties": true,
+                "required": ["severity", "blocking"],
+                "properties": {
+                  "severity": { "enum": ["warning"] },
+                  "blocking": { "enum": [true] }
+                }
+              }
+            },
+            {
+              "$ref":
+                "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

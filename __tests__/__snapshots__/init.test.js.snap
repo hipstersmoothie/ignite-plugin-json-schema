@@ -1,0 +1,520 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`initSchema already bundled and filepath 1`] = `
+Object {
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "id": "root",
+  "properties": Object {
+    "data": Object {
+      "additionalProperties": true,
+      "patternProperties": Object {
+        "\\\\S+": Object {
+          "additionalProperties": true,
+          "type": Array [
+            "object",
+            "array",
+            "string",
+            "integer",
+          ],
+        },
+      },
+      "type": "object",
+    },
+    "errorsAndWarnings": Object {
+      "additionalProperties": Object {
+        "items": Object {
+          "allOf": Array [
+            Object {
+              "additionalProperties": true,
+              "properties": Object {
+                "blocking": Object {
+                  "type": "boolean",
+                },
+                "helperMessage": Object {
+                  "type": "string",
+                },
+                "message": Object {
+                  "oneOf": Array [
+                    Object {
+                      "additionalProperties": true,
+                      "properties": Object {
+                        "asset": Object {
+                          "type": "string",
+                        },
+                      },
+                      "type": "object",
+                    },
+                    Object {
+                      "type": "string",
+                    },
+                  ],
+                },
+                "pageMessage": Object {
+                  "oneOf": Array [
+                    Object {
+                      "additionalProperties": true,
+                      "properties": Object {
+                        "asset": Object {
+                          "type": "string",
+                        },
+                      },
+                      "type": "object",
+                    },
+                    Object {
+                      "type": "string",
+                    },
+                  ],
+                },
+                "param": Object {
+                  "type": Array [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null",
+                    "array",
+                  ],
+                },
+                "severity": Object {
+                  "enum": Array [
+                    "error",
+                    "warning",
+                  ],
+                },
+                "trigger": Object {
+                  "oneOf": Array [
+                    Object {
+                      "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/1",
+                    },
+                    Object {
+                      "enum": Array [
+                        "onChange",
+                        "onNavigation",
+                      ],
+                    },
+                    Object {
+                      "items": Object {
+                        "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0",
+                      },
+                      "type": "array",
+                    },
+                  ],
+                },
+                "type": Object {
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
+            Object {
+              "not": Object {
+                "additionalProperties": true,
+                "properties": Object {
+                  "blocking": Object {
+                    "enum": Array [
+                      true,
+                    ],
+                  },
+                  "severity": Object {
+                    "enum": Array [
+                      "warning",
+                    ],
+                  },
+                },
+                "required": Array [
+                  "severity",
+                  "blocking",
+                ],
+                "type": "object",
+              },
+            },
+            Object {
+              "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0",
+            },
+          ],
+        },
+        "type": "array",
+      },
+      "type": "object",
+    },
+    "id": Object {
+      "type": "string",
+    },
+    "messages": Object {
+      "additionalProperties": false,
+      "properties": Object {
+        "pageValidationMessage": Object {
+          "type": "object",
+        },
+        "validation": Object {
+          "type": "object",
+        },
+      },
+      "type": "object",
+    },
+    "metaData": Object {
+      "additionalProperties": true,
+      "properties": Object {
+        "FRFVersion": Object {
+          "type": "string",
+        },
+        "MEFVersion": Object {
+          "type": "string",
+        },
+        "visualGallery": Object {
+          "properties": Object {
+            "android": Object {
+              "enum": Array [
+                "Yes",
+                "No",
+              ],
+              "type": "string",
+            },
+            "description": Object {
+              "type": "string",
+            },
+            "group": Object {
+              "type": "string",
+            },
+            "iOS": Object {
+              "enum": Array [
+                "Yes",
+                "No",
+              ],
+              "type": "string",
+            },
+            "versionCreated": Object {
+              "type": "string",
+            },
+            "versionDeprecated": Object {
+              "type": "string",
+            },
+            "web": Object {
+              "enum": Array [
+                "Yes",
+                "No",
+              ],
+              "type": "string",
+            },
+            "wiki": Object {
+              "type": "string",
+            },
+            "xd": Object {
+              "type": "string",
+            },
+          },
+          "type": "object",
+        },
+      },
+      "type": "object",
+    },
+    "navigation": Object {
+      "patternProperties": Object {
+        "^(?!(?:BEGIN)$).*$": Object {
+          "additionalProperties": true,
+          "patternProperties": Object {
+            "!(startState|onStart|END_done)": Object {
+              "additionalProperties": true,
+              "properties": Object {
+                "ref": Object {
+                  "type": "string",
+                },
+                "state_type": Object {
+                  "enum": Array [
+                    "VIEW",
+                    "ACTION",
+                    "END",
+                  ],
+                  "type": "string",
+                },
+                "transitions": Object {
+                  "patternProperties": Object {
+                    "\\\\S+": Object {
+                      "type": "string",
+                    },
+                  },
+                  "type": "object",
+                },
+              },
+              "type": "object",
+            },
+          },
+          "properties": Object {
+            "END_done": Object {
+              "additionalProperties": true,
+              "properties": Object {
+                "customTransition": Object {
+                  "type": "boolean",
+                },
+                "outcome": Object {
+                  "type": "string",
+                },
+                "state_type": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "state_type",
+              ],
+              "type": "object",
+            },
+            "onStart": Object {
+              "additionalProperties": true,
+              "anyOf": Array [
+                Object {
+                  "type": "string",
+                },
+                Object {
+                  "items": Object {
+                    "type": "string",
+                  },
+                  "type": "array",
+                },
+                Object {
+                  "type": "object",
+                },
+                Object {
+                  "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0",
+                },
+              ],
+              "properties": Object {
+                "exp": Object {
+                  "oneOf": Array [
+                    Object {
+                      "type": "object",
+                    },
+                    Object {
+                      "type": "string",
+                    },
+                    Object {
+                      "items": Object {
+                        "type": "string",
+                      },
+                      "type": "array",
+                    },
+                  ],
+                },
+              },
+            },
+            "startState": Object {
+              "type": "string",
+            },
+          },
+          "required": Array [
+            "startState",
+          ],
+          "type": "object",
+        },
+      },
+      "properties": Object {
+        "BEGIN": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "BEGIN",
+      ],
+      "type": "object",
+    },
+    "schema": Object {
+      "additionalProperties": Object {
+        "additionalProperties": Object {
+          "_comment": "required ['type'] - type used to be required, needs attention",
+          "additionalProperties": true,
+          "properties": Object {
+            "default": Object {
+              "type": Array [
+                "string",
+                "null",
+                "boolean",
+                "number",
+              ],
+            },
+            "enum": Object {
+              "items": Object {
+                "type": Array [
+                  "string",
+                  "null",
+                  "boolean",
+                  "number",
+                ],
+              },
+              "type": "array",
+            },
+            "format": Object {
+              "additionalProperties": true,
+              "properties": Object {
+                "mask": Object {
+                  "type": "string",
+                },
+                "type": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "type",
+              ],
+              "type": "object",
+            },
+            "metadata": Object {
+              "type": "object",
+            },
+            "type": Object {
+              "type": "string",
+            },
+            "validation": Object {
+              "items": Object {
+                "$ref": "#/properties/errorsAndWarnings/additionalProperties/items",
+              },
+              "type": "array",
+            },
+          },
+          "type": "object",
+        },
+        "properties": Object {
+          "UUID": Object {
+            "additionalProperties": false,
+            "properties": Object {
+              "type": Object {
+                "type": Array [
+                  "null",
+                  "string",
+                ],
+              },
+            },
+            "required": Array [
+              "type",
+            ],
+            "type": "object",
+          },
+          "enum": Object {
+            "type": "array",
+          },
+          "type": Object {
+            "type": "string",
+          },
+        },
+        "type": "object",
+      },
+      "properties": Object {
+        "ROOT": Object {
+          "additionalProperties": true,
+          "patternProperties": Object {
+            "\\\\S+": Object {
+              "additionalProperties": true,
+              "properties": Object {
+                "UUID": Object {
+                  "type": "string",
+                },
+                "type": Object {
+                  "type": Array [
+                    "null",
+                    "string",
+                  ],
+                },
+              },
+              "required": Array [
+                "type",
+              ],
+              "type": "object",
+            },
+          },
+          "type": "object",
+        },
+      },
+      "type": "object",
+    },
+    "types": Object {
+      "additionalProperties": Object {
+        "additionalProperties": false,
+        "properties": Object {
+          "format": Object {
+            "type": "object",
+          },
+          "validation": Object {
+            "items": Object {
+              "properties": Object {
+                "message": Object {
+                  "type": "string",
+                },
+                "type": Object {
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
+            "type": "array",
+          },
+        },
+        "type": "object",
+      },
+      "type": "object",
+    },
+  },
+  "required": Array [
+    "id",
+    "topic",
+    "views",
+    "schema",
+    "data",
+    "navigation",
+  ],
+  "type": "object",
+}
+`;
+
+exports[`initSchema already bundled and object included 1`] = `
+Object {
+  "id": "foo",
+  "properties": Object {
+    "bar": Object {
+      "type": "string",
+    },
+  },
+}
+`;
+
+exports[`initSchema bundles schema 1`] = `
+Object {
+  "$id": "https://example.com/address.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependencies": Object {
+    "extended-address": Array [
+      "street-address",
+    ],
+    "post-office-box": Array [
+      "street-address",
+    ],
+  },
+  "description": "An address similar to http://microformats.org/wiki/h-card",
+  "properties": Object {
+    "country-name": Object {
+      "type": "string",
+    },
+    "extended-address": Object {
+      "type": "string",
+    },
+    "locality": Object {
+      "type": "string",
+    },
+    "post-office-box": Object {
+      "type": "string",
+    },
+    "postal-code": Object {
+      "type": "string",
+    },
+    "region": Object {
+      "type": "string",
+    },
+    "street-address": Object {
+      "type": "string",
+    },
+  },
+  "required": Array [
+    "locality",
+    "region",
+    "country-name",
+  ],
+  "type": "object",
+}
+`;

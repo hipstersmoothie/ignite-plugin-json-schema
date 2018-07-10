@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SchemaMatcher resolveSchema allOf 1`] = `
+Object {
+  "additionalProperties": true,
+  "allOf": Array [
+    Object {
+      "additionalProperties": true,
+      "properties": Object {
+        "blocking": Object {
+          "type": "boolean",
+        },
+        "helperMessage": Object {
+          "type": "string",
+        },
+        "message": Object {
+          "oneOf": Array [
+            Object {
+              "additionalProperties": true,
+              "properties": Object {
+                "asset": Object {
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
+            Object {
+              "type": "string",
+            },
+          ],
+        },
+        "pageMessage": Object {
+          "oneOf": Array [
+            Object {
+              "additionalProperties": true,
+              "properties": Object {
+                "asset": Object {
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
+            Object {
+              "type": "string",
+            },
+          ],
+        },
+        "param": Object {
+          "type": Array [
+            "string",
+            "number",
+            "boolean",
+            "null",
+            "array",
+          ],
+        },
+        "severity": Object {
+          "enum": Array [
+            "error",
+            "warning",
+          ],
+        },
+        "trigger": Object {
+          "oneOf": Array [
+            Object {
+              "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/1",
+            },
+            Object {
+              "enum": Array [
+                "onChange",
+                "onNavigation",
+              ],
+            },
+            Object {
+              "items": Object {
+                "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0",
+              },
+              "type": "array",
+            },
+          ],
+        },
+        "type": Object {
+          "type": "string",
+        },
+      },
+      "type": "object",
+    },
+    Object {
+      "not": Object {
+        "additionalProperties": true,
+        "properties": Object {
+          "blocking": Object {
+            "enum": Array [
+              true,
+            ],
+          },
+          "severity": Object {
+            "enum": Array [
+              "warning",
+            ],
+          },
+        },
+        "required": Array [
+          "severity",
+          "blocking",
+        ],
+        "type": "object",
+      },
+    },
+    Object {
+      "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0",
+    },
+  ],
+  "enum": Array [
+    "onChange",
+    "onNavigation",
+  ],
+  "not": Object {
+    "additionalProperties": true,
+    "properties": Object {
+      "blocking": Object {
+        "enum": Array [
+          true,
+        ],
+      },
+      "severity": Object {
+        "enum": Array [
+          "warning",
+        ],
+      },
+    },
+    "required": Array [
+      "severity",
+      "blocking",
+    ],
+    "type": "object",
+  },
+  "properties": Object {
+    "blocking": Object {
+      "type": "boolean",
+    },
+    "helperMessage": Object {
+      "type": "string",
+    },
+    "message": Object {
+      "oneOf": Array [
+        Object {
+          "additionalProperties": true,
+          "properties": Object {
+            "asset": Object {
+              "type": "string",
+            },
+          },
+          "type": "object",
+        },
+        Object {
+          "type": "string",
+        },
+      ],
+    },
+    "pageMessage": Object {
+      "oneOf": Array [
+        Object {
+          "additionalProperties": true,
+          "properties": Object {
+            "asset": Object {
+              "type": "string",
+            },
+          },
+          "type": "object",
+        },
+        Object {
+          "type": "string",
+        },
+      ],
+    },
+    "param": Object {
+      "type": Array [
+        "string",
+        "number",
+        "boolean",
+        "null",
+        "array",
+      ],
+    },
+    "severity": Object {
+      "enum": Array [
+        "error",
+        "warning",
+      ],
+    },
+    "trigger": Object {
+      "oneOf": Array [
+        Object {
+          "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/1",
+        },
+        Object {
+          "enum": Array [
+            "onChange",
+            "onNavigation",
+          ],
+        },
+        Object {
+          "items": Object {
+            "$ref": "#/properties/errorsAndWarnings/additionalProperties/items/allOf/0/properties/trigger/oneOf/0",
+          },
+          "type": "array",
+        },
+      ],
+    },
+    "type": Object {
+      "type": "string",
+    },
+  },
+  "type": "object",
+}
+`;
+
+exports[`SchemaMatcher resolveSchema anyOF 1`] = `
+Object {
+  "additionalProperties": true,
+  "anyOf": Array [
+    Object {
+      "type": "string",
+    },
+    Object {
+      "items": Object {
+        "type": "string",
+      },
+      "type": "array",
+    },
+    Object {
+      "type": "object",
+    },
+    Object {
+      "enum": Array [
+        "onChange",
+        "onNavigation",
+      ],
+    },
+  ],
+  "properties": Object {
+    "exp": Object {
+      "oneOf": Array [
+        Object {
+          "type": "object",
+        },
+        Object {
+          "type": "string",
+        },
+        Object {
+          "items": Object {
+            "type": "string",
+          },
+          "type": "array",
+        },
+      ],
+    },
+  },
+}
+`;

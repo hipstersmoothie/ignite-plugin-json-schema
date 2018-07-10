@@ -1,5 +1,5 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { map, isEmpty, isObject, get, filter } from 'lodash-es';
 import PropTypes from 'prop-types';
 
 import SchemaMatcher from './schema-matcher';
@@ -12,8 +12,8 @@ export const ListItem = ({
   schemaMatcher,
   ...rest
 }) => {
-  values = map(values, value => (isObject(value) ? value.title : value));
-  values = isEmpty(values) ? '' : `<code>${values}</code>`;
+  values = _.map(values, value => (_.isObject(value) ? value.title : value));
+  values = _.isEmpty(values) ? '' : <code>{values}</code>;
 
   let subProps;
 
@@ -51,25 +51,31 @@ ListItem.defaultProps = {
   type: null,
   description: null,
   values: null,
-  schemaMatcher: null
+  schemaMatcher: new SchemaMatcher()
 };
 
-export const PropertyList = ({ items, schemaMatcher }) => (
-  <ul>
-    {map(items, item => (
-      <ListItem key={item.name} {...item} schemaMatcher={schemaMatcher} />
-    ))}
-  </ul>
-);
+export const PropertyList = ({ title, items, schemaMatcher }) =>
+  items.length ? (
+    <div>
+      {title && <h4>{title}</h4>}
+      <ul>
+        {_.map(items, item => (
+          <ListItem key={item.name} {...item} schemaMatcher={schemaMatcher} />
+        ))}
+      </ul>
+    </div>
+  ) : null;
 
 PropertyList.propTypes = {
+  title: PropTypes.string,
   schemaMatcher: PropTypes.object,
   items: PropTypes.array
 };
 
 PropertyList.defaultProps = {
+  title: '',
   schemaMatcher: {},
-  items: null
+  items: []
 };
 
 class Schema extends Component {
@@ -91,7 +97,8 @@ class Schema extends Component {
     const requiredProperties = rootDefinition.required || [];
 
     let properties = this.schemaMatcher.tupleArray(rootDefinition.properties);
-    properties = filter(
+
+    properties = _.filter(
       properties,
       property =>
         !Object.keys(this.props.plugins).includes(property.name) &&
@@ -112,15 +119,26 @@ class Schema extends Component {
         </h1>
         <p>{rootDefinition.description}</p>
         <h2>Structure</h2>
-        <h4>Required</h4>
-        <PropertyList items={required} schemaMatcher={this.schemaMatcher} />
-        <h4>Optional</h4>
-        <PropertyList items={optional} schemaMatcher={this.schemaMatcher} />
-        {Object.entries(this.props._injectedComponents).map(([name, render]) =>
-          render(
-            this.schemaMatcher.resolveWhole(
-              get(rootDefinition, `properties.${name}`)
-            ) || {}
+        <PropertyList
+          title="Required"
+          items={required}
+          schemaMatcher={this.schemaMatcher}
+        />
+        <PropertyList
+          title="Optional"
+          items={optional}
+          schemaMatcher={this.schemaMatcher}
+        />
+        {Object.entries(this.props._injectedComponents).map(
+          ([name, Component]) => (
+            <Component
+              key={name}
+              schema={
+                this.schemaMatcher.resolveWhole(
+                  _.get(rootDefinition, `properties.${name}`)
+                ) || {}
+              }
+            />
           )
         )}
       </div>
@@ -129,16 +147,20 @@ class Schema extends Component {
 }
 
 Schema.propTypes = {
+  _injectedComponents: PropTypes.object,
   _initData: PropTypes.any,
+  id: PropTypes.string,
   plugins: PropTypes.object,
-  options: PropTypes.object,
+  options: PropTypes.array,
   omitProperties: PropTypes.array
 };
 
 Schema.defaultProps = {
+  _injectedComponents: {},
   _initData: null,
+  id: '',
   plugins: {},
-  options: {},
+  options: [],
   omitProperties: []
 };
 
