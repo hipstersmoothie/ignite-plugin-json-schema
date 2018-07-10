@@ -1,5 +1,5 @@
 import SchemaMatcher from '../src/schema-matcher';
-import schema from './utils/complexSchema.json';
+import schema from './utils/complexSchema';
 
 describe('SchemaMatcher', () => {
   test('resolveRef', () => {
