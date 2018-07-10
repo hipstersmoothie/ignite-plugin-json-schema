@@ -1,6 +1,15 @@
-# Ignite Plugin JSON-Schema
+[![CircleCI branch](https://img.shields.io/circleci/project/github/hipstersmoothie/ignite-plugin-json-schema/master.svg?style=for-the-badge)](https://circleci.com/gh/hipstersmoothie/ignite-plugin-json-schema/tree/master) [![Codecov branch](https://img.shields.io/codecov/c/github/hipstersmoothie/ignite-plugin-json-schema/master.svg?style=for-the-badge)](https://codecov.io/gh/hipstersmoothie/ignite-plugin-json-schema/branch/master) [![npm](https://img.shields.io/npm/v/ignite-plugin-json-schema.svg?style=for-the-badge)](https://www.npmjs.com/package/ignite-plugin-json-schema)
+[![npm](https://img.shields.io/npm/dt/ignite-plugin-json-schema.svg?style=for-the-badge)](https://www.npmjs.com/package/ignite-plugin-json-schema)
 
-This plugin for [Ignite](https://github.com/intuit/Ignite) takes a [JSON-Schema](http://json-schema.org/) and exposes a [Component](https://reactjs.org/docs/react-component.html) that matches [ids](http://json-schema.org/latest/json-schema-core.html#id-keyword) to auto-generate docs.
+<img width="200" height="200"
+      src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/fire.png">
+
+  <h1>
+    Ignite Plugin JSON-Schema
+  </h1>
+  <p>
+This plugin for <a href="https://github.com/intuit/Ignite">Ignite</a> takes a <a href="http://json-schema.org/">JSON-Schema</a> and exposes a <a href="https://reactjs.org/docs/react-component.html">Component</a> that matches <a href="http://json-schema.org/latest/json-schema-core.html#id-keyword">ids</a> to auto-generate docs.</p>
+</div>
 
 ## Usage
 
