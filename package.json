@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "xo",
     "build": "babel src -d dist --ignore '**/__tests__/' --copy-files",
+    "build:watch": "npm run build -- --verbose -w",
     "test": "jest",
     "release": "github-semantic-version --bump --changelog --push --publish"
   },
